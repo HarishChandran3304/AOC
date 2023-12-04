@@ -3,21 +3,6 @@ import re
 with open("input.txt", "r") as f:
     data = f.read()
 
-# def solve(data):
-#     res1 = 0
-#     lines = data.split("\n")
-#     pattern = r'\d+'
-
-#     for line in lines:
-#         curr, winning = line.split(":")[1].split("|")
-#         curr = set(re.findall(pattern, curr))
-#         winning = set(re.findall(pattern, winning))
-#         score = len(curr.intersection(winning))
-
-#         res1 += 2**(score-1) if score else 0
-
-#     return res1
-
 def solve(data):
     res1 = 0
     lines = data.split("\n")
@@ -26,9 +11,7 @@ def solve(data):
 
     for i in range(len(lines)):
         curr, winning = lines[i].split(":")[1].split("|")
-        curr = set(re.findall(pattern, curr))
-        winning = set(re.findall(pattern, winning))
-        score = len(curr.intersection(winning))
+        score = len(set(re.findall(pattern, curr)).intersection(set(re.findall(pattern, winning))))
 
         res1 += 2**(score-1) if score else 0
         
