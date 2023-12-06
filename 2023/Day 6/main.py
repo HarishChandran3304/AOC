@@ -11,17 +11,13 @@ def get_ways(time, dist):
 
 def solve(data):
     times, dists = data.split("\n")
-    times = re.findall(r'(\d+)', times)
-    dists = re.findall(r'(\d+)', dists)
-    time = int("".join(times))
-    dist = int("".join(dists))
-    times = list(map(int, times))
-    dists = list(map(int, dists))
+    times, dists = re.findall(r'(\d+)', times), re.findall(r'(\d+)', dists)
+    time, dist = int("".join(times)), int("".join(dists))
+    times, dists = list(map(int, times)), list(map(int, dists))
     res1 = 1
 
     for i in range(len(times)):
         res1 *= get_ways(times[i], dists[i])
-    
     res2 = get_ways(time, dist)
     
     return res1, res2
